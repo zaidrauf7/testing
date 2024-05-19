@@ -11,6 +11,17 @@ function App() {
   const [img, setImg] = useState("");
   const [data, setData] = useState([]);
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setImg(url);
+      console.log('File URL:', url);
+    } else {
+      setImg('');
+      console.log('No file selected');
+    }
+  };
   const onSubmit = (e) => {
     e.preventDefault();
     const newData = {
@@ -21,10 +32,10 @@ function App() {
     setData([...data, newData]);
     setTitle("");
     setDescription("");
-    setImg("")
 
   };
-
+  
+  
   return (
     <>
       <Form
@@ -32,11 +43,11 @@ function App() {
         title={title}
         setDescription={setDescription}
         description={description}
-        setImg={setImg}
+        handleFileChange={handleFileChange}
         img={img}
         onSubmit={onSubmit}
       />
-      <Table title={title} description={description} img={img} />
+      <Table data={data}/>
     </>
   );
 }
