@@ -1,4 +1,4 @@
-const Form = ({ setTitle }) => {
+const Form = ({ setTitle , onSubmit }) => {
   return (
     <div className="border-2 border-gray-400 w-full h-screen flex justify-center items-center ">
       <div className="flex-col justify-center">
@@ -23,6 +23,7 @@ const Form = ({ setTitle }) => {
         <input className="border-2 p-2 rounded-md w-[250px] border-gray-700" type="file" onClick={e => setTitle(e.target.value)}/>
 
       </div>
+      <div><button onClick={onSubmit}>Submit</button></div>
       </div>
     </div>
   );
